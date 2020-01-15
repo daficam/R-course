@@ -70,7 +70,7 @@ is_valid <- FALSE # For it to be boolean it needs to be all caps and no quotes F
 
 
 ###### Data Structures
-
+################
 ##Vector
 # Vector is a list of data of same type
 c(4,12,7,9) # Define the vector which is a list of 4,12,7,9
@@ -122,7 +122,7 @@ combined_logical <- c(num_logical, char_logical)
 class(combined_logical) # this is char
 
 
-
+##########
 ## Vector indeces - subsetting vectors
 animals <- c("mouse", "rat", "dog", "cat")
 animals[2] # for subsetting we use [] for functions we use ()
@@ -141,7 +141,7 @@ no_mouse <- animals[-1]
 no_mouse
 
 
-
+##########
 ## Conditional Subsetting (without indeces)
 
 #remove first 2 items using logical operators
@@ -176,6 +176,39 @@ animals[animals %in% new_animals]
 ## Exercise - make a vector weight_kg from weight_g
 weight_kg <- weight_g/1000
 weight_kg # in the new vector each value is divided by 1000
+
+
+
+
+#############
+## Missing Data 
+
+#NA means missing data
+heights <- c(2,4,4,NA,6)
+mean(heights) # returns NA because there is missing data
+mean(heights, na.rm=TRUE) # this way NA is ignored in the mean computation
+
+#remove NA's
+clean_heights<-na.omit(heights)
+clean_heights
+mean(clean_heights) # another way to get a clean mean
+
+is.na(heights) # shows which is NA
+!is.na(heights) # shows which is not NA
+
+#subset to what is not NA
+heights[!is.na(heights)]
+
+#save subset to new variable
+nona_heights<-heights[!is.na(heights)]
+
+#Exercise
+heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+heights_no_na<-heights[!is.na(heights)]
+median(heights_no_na)
+above_67<-heights_no_na[heights_no_na>67]
+length(above_67) # removed NAs, calculated median and subsetted to above 67, then displayed length of subset variable
+
 
 #Factor
 # Factor used for categorical data (like small, medium, large)
